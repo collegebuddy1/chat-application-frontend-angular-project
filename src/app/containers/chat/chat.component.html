@@ -1,0 +1,45 @@
+<div class="navigation-menu">
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
+        <div class="container">
+            <a class="navbar-brand">Chat App by Luis Galan</a>
+            <app-username (userNameEvent)="userNameUpdate($event)" *ngIf="!userName"></app-username>
+            <a class="navbar-brand" *ngIf="userName">{{userName}}</a>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9" style='background-color:#F0FFFF;'>
+            <div class="messages_list">
+                <div class="chatbox__messages" *ngFor="let msg of messageList">
+                    <div class="user-message">
+                        <div class="container-sm">
+                            <div class="message-box">
+                                <p class="name">{{msg.userName}}</p>
+                                <p class="message">{{msg.message}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3" style='background-color:#F5F5DC;'>
+            <div class="chatbox__userlist">
+                <h2>User List</h2>
+                <div class="chatbox__user--active" *ngFor="let user of userList">
+                    <p>{{user}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container justify-content-end">
+        <div class="form-inline">
+            <div class="input-group">
+                <input type="text" [(ngModel)]=message class="form-control" placeholder="Write here..."
+                    aria-label="Message" aria-describedby="basic-addon1">
+                <button class="btn btn-danger" (click)="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
